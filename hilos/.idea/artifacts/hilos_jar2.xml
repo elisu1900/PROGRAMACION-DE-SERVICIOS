@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="hilos:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/hilos_jar2</output-path>
+    <root id="archive" name="hilos.jar">
+      <element id="module-output" name="hilos" />
+    </root>
+  </artifact>
+</component>
