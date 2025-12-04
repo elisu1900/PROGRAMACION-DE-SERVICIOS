@@ -9,13 +9,13 @@ public class PizzaMaker implements Runnable {
     private final int id;
     private final Tray tray;
     private final Random random;
-    private volatile boolean working;
+    private boolean working;
 
     /**
-     * Constructor del pizzero
+     * Constructor del pizzero.
      *
-     * @param id
-     * @param tray
+     * @param id identificador
+     * @param tray bandeja compartida
      */
     public PizzaMaker(int id, Tray tray) {
         this.id = id;
@@ -25,7 +25,7 @@ public class PizzaMaker implements Runnable {
     }
 
     /**
-     * Detiene el trabajo del pizzero
+     * deja de trabajar el pizzero
      */
     public void stopWorking() {
         this.working = false;
@@ -37,24 +37,20 @@ public class PizzaMaker implements Runnable {
 
         while (working) {
             try {
-                // Comienza a preparar una pizza
                 System.out.println("Pizzero " + id + " comienza a preparar una pizza");
 
-                // Tarda entre 5 y 10 segundos
                 int preparationTime = 5000 + random.nextInt(5001);
                 Thread.sleep(preparationTime);
 
-                // Termina y coloca la pizza en la bandeja
                 tray.depositPizza();
                 int pizzasInTray = tray.getPizzaCount();
-                System.out.println("Pizzero " + id + " termina una pizza y la coloca en la bandeja" +
-                        "Pizzas en bandeja: " + pizzasInTray);
+                System.out.println("Pizzero " + id + " termina una pizza " + "Pizzas en bandeja: " + pizzasInTray);
 
             } catch (InterruptedException e) {
                 break;
             }
         }
 
-        System.out.println("Pizzero " + id + " termina su trabajo y se va a casa");
+        System.out.println("Pizzero " + id + " termina su trabajo y se va");
     }
 }

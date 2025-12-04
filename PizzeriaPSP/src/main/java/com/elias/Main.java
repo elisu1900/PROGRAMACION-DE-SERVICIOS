@@ -5,13 +5,10 @@ import java.util.List;
 import com.elias.model.Client;
 import com.elias.model.Tray;
 import com.elias.model.PizzaMaker;
-import com.elias.services.ShareService;
 /**
  * Clase principal de la simulación de Pizzería Luigi's.
  * Gestiona la creación de hilos de pizzeros y clientes.
- *
  * @author Elias
- * @version 1.0
  */
 public class Main{
     private static final int DEFAULT_PIZZA_MAKERS = 2;
@@ -32,7 +29,7 @@ public class Main{
             try {
                 numPizzaMakers = Integer.parseInt(args[0]);
                 if (numPizzaMakers < 1) {
-                    System.err.println("El número de pizzeros debe ser mayor que 1");
+                    System.err.println("El numero de pizzeros debe ser mayor que 1");
                     System.err.println("Usando valor por defecto: " + DEFAULT_PIZZA_MAKERS);
                     numPizzaMakers = DEFAULT_PIZZA_MAKERS;
                 }

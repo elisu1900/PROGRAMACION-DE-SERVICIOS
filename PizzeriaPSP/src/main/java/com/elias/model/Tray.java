@@ -10,23 +10,23 @@ public class Tray {
     private final List<String> pizzas;
 
     /**
-     * Constructor de la bandeja
+     * constructor de la bandeja
      */
     public Tray() {
         this.pizzas = new ArrayList<>();
     }
 
     /**
-     * Deposita una pizza en la bandeja.
+     * pone una pizza en la bandeja
      */
     public synchronized void depositPizza() {
         pizzas.add("Pizza");
     }
 
     /**
-     * Intenta tomar una pizza de la bandeja.
+     * Intenta coger una pizza de la bandeja
      *
-     * @return true si había pizza disponible, false en caso contrario
+     * @return true si hay pizza, false si no
      */
     public synchronized boolean takePizza() {
         if (!pizzas.isEmpty()) {
@@ -37,8 +37,8 @@ public class Tray {
     }
 
     /**
-     *  Da el numero de pizzas en la bandeja.
-     * @return número de pizzas
+     *  Da el numero de pizzas en bandeja
+     * @return numero de pizzas
      */
     public synchronized int getPizzaCount() {
         return pizzas.size();
