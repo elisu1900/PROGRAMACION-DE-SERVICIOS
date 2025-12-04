@@ -1,38 +1,46 @@
 package com.elias.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Clase de la bandeja compartida de pizzas
+ */
 public class Tray {
+    private final List<String> pizzas;
 
-    private int nPizzas;
-
+    /**
+     * Constructor de la bandeja
+     */
     public Tray() {
-        this.nPizzas = 0;
+        this.pizzas = new ArrayList<>();
     }
 
     /**
-     * set the number of pizzas to a specific value
-     * @param nPizzas number of pizzas
+     * Deposita una pizza en la bandeja.
      */
-
-
-    /**
-     * return the number of pizza in the tray
-     * @return number of pizzas
-     */
-    public int getnPizzas() {
-        return nPizzas;
+    public synchronized void depositPizza() {
+        pizzas.add("Pizza");
     }
 
     /**
-     * the pizza maker add a pizza
+     * Intenta tomar una pizza de la bandeja.
+     *
+     * @return true si había pizza disponible, false en caso contrario
      */
-    public synchronized void add(){
-        this.nPizzas++;
+    public synchronized boolean takePizza() {
+        if (!pizzas.isEmpty()) {
+            pizzas.remove(0);
+            return true;
+        }
+        return false;
     }
 
     /**
-     * the cliente take a pizza
+     *  Da el numero de pizzas en la bandeja.
+     * @return número de pizzas
      */
-    public synchronized void subtract(){
-        this.nPizzas--;
+    public synchronized int getPizzaCount() {
+        return pizzas.size();
     }
 }
